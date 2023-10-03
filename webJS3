@@ -1,0 +1,102 @@
+class Henkilo {
+  constructor(etunimi, sukunimi, kutsumanimi, syntymavuosi) {
+    this.etunimi = etunimi;
+    this.sukunimi = sukunimi;
+    this.kutsumanimi = kutsumanimi;
+    this.syntymavuosi = syntymavuosi;
+  }
+}
+class Urheilija extends Henkilo {
+  constructor(
+    etunimi,
+    sukunimi,
+    kutsumanimi,
+    syntymavuosi,
+    linkki_kuvaan,
+    omapaino,
+    laji,
+    saavutukset
+  ) {
+    super(etunimi, sukunimi, kutsumanimi, syntymavuosi);
+    this._linkki_kuvaan = linkki_kuvaan;
+    this._omapaino = omapaino;
+    this._laji = laji;
+    this._saavutukset = saavutukset;
+  }
+
+  get linkki_kuvaan() {
+    return this._linkki_kuvaan;
+  }
+  set linkki_kuvaan(linkki) {
+    this._linkki_kuvaan = linkki;
+  }
+  get omapaino() {
+    return this._omapaino;
+  }
+  set omapaino(paino) {
+    this._omapaino = paino;
+  }
+  get laji() {
+    return this._laji;
+  }
+  set laji(ulaji) {
+    this._laji = ulaji;
+  }
+  get saavutukset() {
+    return this._saavutukset;
+  }
+  set saavutukset(usaavutukset) {
+    this._saavutukset = usaavutukset;
+  }
+  toString() {
+    return `
+    Nimi: ${this.etunimi} ${this.sukunimi} (${this.kutsumanimi})
+    Syntymävuosi: ${this.syntymavuosi}
+    Kuva: ${this._linkki_kuvaan}
+    Laji: ${this._laji}
+    Paino: ${this._omapaino}
+    Saavutukset: ${this._saavutukset
+      .map((saavutus) => `${saavutus}`)
+      .join(", ")}`;
+  }
+}
+
+const linkki1 =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/2018_Winter_Olympics_-_Yuzuru_Hanyu_%28cropped%29.jpg/220px-2018_Winter_Olympics_-_Yuzuru_Hanyu_%28cropped%29.jpg";
+const usaavutukset1 = [
+  "1. MM 2017",
+  "1. MM 2014",
+  "2. MM 2019",
+  "2. MM 2016",
+  "2. MM 2015",
+];
+const urh1 = new Urheilija(
+  "Yuzuru",
+  "Hanyu",
+  "Yuzuru",
+  1994,
+  linkki1,
+  "57 kg",
+  "taitoluistelu",
+  usaavutukset1
+);
+console.log(urh1.toString());
+
+const linkki2 =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Wimbledon_2012_Day_10_Cropped.jpg/250px-Wimbledon_2012_Day_10_Cropped.jpg";
+const usaavutukset2 = [
+  "1. Olympialaiset kaksinpeli 2012",
+  "1. Olympialaiset nelinpeli 2012",
+  "1. Olympialaiset nelinpeli 2008",
+];
+const urh2 = new Urheilija(
+  "Serena",
+  "Williams",
+  "Serena",
+  1981,
+  linkki2,
+  "70 kg",
+  "tennis",
+  usaavutukset2
+);
+console.log(urh2.toString());
